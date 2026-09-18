@@ -1,0 +1,6 @@
+parking.app
+parking.application.usecase
+parking.domain.exception
+parking.domain.model
+parking.domain.repository
+parking.infrastructure.repository

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cr.ac.parkingcoto</groupId>
+    <artifactId>parking-coto</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+
+    <name>Parking Coto</name>
+    <description>
+        EIF400 - Programming Paradigms - Project 2.
+        Private parking lot management system, built with Clean Architecture
+        (domain / application / infrastructure / app layers).
+    </description>
+
+    <properties>
+        <maven.compiler.release>17</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Default class NetBeans/Maven will run with "mvn exec:java" or the IDE's Run button. -->
+        <exec.mainClass>parking.app.Main</exec.mainClass>
+    </properties>
+
+    <build>
+        <finalName>parking-coto</finalName>
+        <plugins>
+            <!-- Compiles the sources using Java 17 language level. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+            </plugin>
+
+            <!-- Lets you run "mvn exec:java" from the command line, and lets
+                 NetBeans's Run/Debug buttons launch the class configured
+                 above (or overridden in Project Properties > Run). -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <mainClass>${exec.mainClass}</mainClass>
+                </configuration>
+            </plugin>
+
+            <!-- Makes "mvn package" produce a runnable JAR
+                 (java -jar target/parking-coto.jar) whose default entry
+                 point is Main; switch to ParkingTests from the command
+                 line with: java -cp target/parking-coto.jar parking.app.ParkingTests -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.4.1</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>parking.app.Main</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+
+            <!-- Generates the JavaDoc site with "mvn javadoc:javadoc". -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.6.3</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>
