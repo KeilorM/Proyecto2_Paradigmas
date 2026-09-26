@@ -12,6 +12,9 @@ import java.util.Optional;
  * have the ticket number typed by the user and need the actual
  * {@link ParkingTicket} instance to pass into
  * {@link RegisterPaymentUseCase}.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public class GetTicketByNumberUseCase {
 
@@ -26,7 +29,8 @@ public class GetTicketByNumberUseCase {
 
     /**
      * @param number the ticket number to search for
-     * @return the matching ticket, or {@link Optional#empty()} if no ticket has that number
+     * @return the matching ticket, or {@link Optional#empty()} 
+     * if no ticket has that number
      */
     public Optional<ParkingTicket> execute(int number) {
         return ticketRepository.findByNumber(number);

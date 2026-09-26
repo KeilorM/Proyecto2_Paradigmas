@@ -8,6 +8,9 @@ package parking.domain.model;
  * enum as the only space type it can occupy. This is the mechanism the
  * whole system relies on to decide compatibility polymorphically,
  * instead of asking "what concrete type is this vehicle" anywhere else.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public enum SpaceType {
 

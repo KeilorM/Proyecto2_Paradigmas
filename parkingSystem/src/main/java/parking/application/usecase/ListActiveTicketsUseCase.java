@@ -7,6 +7,9 @@ import java.util.List;
 
 /**
  * Lists every currently active ticket.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public class ListActiveTicketsUseCase {
 

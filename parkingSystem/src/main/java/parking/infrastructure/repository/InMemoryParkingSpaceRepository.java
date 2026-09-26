@@ -11,6 +11,9 @@ import java.util.stream.Collectors;
 /**
  * In-memory {@link ParkingSpaceRepository} implementation, backed by an
  * {@link ArrayList}.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public class InMemoryParkingSpaceRepository implements ParkingSpaceRepository {
 

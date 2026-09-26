@@ -11,6 +11,9 @@ import java.util.List;
  * <p>
  * Contrast with {@link ListVehiclesInsideUseCase}, which only returns
  * vehicles that are currently inside the lot (active ticket).
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public class ListRegisteredVehiclesUseCase {
 

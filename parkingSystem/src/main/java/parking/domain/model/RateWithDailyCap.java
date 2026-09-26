@@ -12,6 +12,9 @@ package parking.domain.model;
  * a different cap amount, or even a new decorator stacked on top of this
  * one - without touching {@link Vehicle}, {@link ParkingTicket}, or the
  * application's use cases.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public class RateWithDailyCap implements Rate {
 
@@ -32,7 +35,8 @@ public class RateWithDailyCap implements Rate {
      * @param capAmountPerPeriod maximum amount chargeable per each
      *                           complete or partial 24-hour period
      */
-    public RateWithDailyCap(Rate baseRate, long minHoursToApplyCap, long capAmountPerPeriod) {
+    public RateWithDailyCap(Rate baseRate, long minHoursToApplyCap,
+            long capAmountPerPeriod) {
         this.baseRate = baseRate;
         this.minHoursToApplyCap = minHoursToApplyCap;
         this.capAmountPerPeriod = capAmountPerPeriod;

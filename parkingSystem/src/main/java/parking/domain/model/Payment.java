@@ -5,6 +5,9 @@ import java.time.LocalDateTime;
 /**
  * An immutable record of a payment made against an already-closed
  * {@link ParkingTicket}.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public class Payment {
 
@@ -18,12 +21,14 @@ public class Payment {
      * Creates a payment record.
      *
      * @param id          unique payment identifier
-     * @param ticket      the ticket being paid; must be {@link TicketStatus#CLOSED}
+     * @param ticket      the ticket being paid; must be 
+     * {@link TicketStatus#CLOSED}
      * @param dateTime    the moment the payment was made
      * @param amount      the amount collected
      * @param paymentType the method used to pay
      */
-    public Payment(int id, ParkingTicket ticket, LocalDateTime dateTime, long amount, PaymentType paymentType) {
+    public Payment(int id, ParkingTicket ticket, LocalDateTime dateTime,
+            long amount, PaymentType paymentType) {
         this.id = id;
         this.ticket = ticket;
         this.dateTime = dateTime;
@@ -71,6 +76,7 @@ public class Payment {
      */
     @Override
     public String toString() {
-        return "Payment #" + id + " - ticket #" + ticket.getNumber() + " - " + paymentType + " - " + amount;
+        return "Payment #" + id + " - ticket #" + ticket.getNumber() +
+                " - " + paymentType + " - " + amount;
     }
 }

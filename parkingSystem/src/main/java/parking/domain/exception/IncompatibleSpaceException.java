@@ -3,6 +3,9 @@ package parking.domain.exception;
 /**
  * Thrown when attempting to assign a space whose {@code SpaceType} does
  * not match the vehicle's required type.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public class IncompatibleSpaceException extends SpaceNotAvailableException {
 

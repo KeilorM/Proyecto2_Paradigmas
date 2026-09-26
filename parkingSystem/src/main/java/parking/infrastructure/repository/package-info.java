@@ -8,5 +8,8 @@
  * network-backed implementation could be dropped in here without the
  * domain or application layers noticing, since both only ever reference
  * the repository interfaces, never these concrete classes directly.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 package parking.infrastructure.repository;

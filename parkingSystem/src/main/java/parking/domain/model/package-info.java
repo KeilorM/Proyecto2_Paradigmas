@@ -10,5 +10,8 @@
  * multiple entities, and any notion of "use case" belong to the
  * {@code parking.application} and {@code parking.infrastructure}
  * packages instead.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 package parking.domain.model;

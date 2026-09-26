@@ -8,6 +8,9 @@ import java.util.Optional;
 /**
  * Persistence port for {@link ParkingTicket} instances, including the
  * generation of unique ticket numbers.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public interface ParkingTicketRepository {
 
@@ -33,7 +36,8 @@ public interface ParkingTicketRepository {
      * Finds the active ticket, if any, for the vehicle with the given plate.
      *
      * @param plate the plate to search for
-     * @return the matching active ticket, or {@link Optional#empty()} if the vehicle is not currently parked
+     * @return the matching active ticket, or {@link Optional#empty()} 
+     * if the vehicle is not currently parked
      */
     Optional<ParkingTicket> findActiveByPlate(String plate);
 
@@ -41,14 +45,16 @@ public interface ParkingTicketRepository {
      * Finds a ticket by its unique number, in any status.
      *
      * @param number the ticket number to search for
-     * @return the matching ticket, or {@link Optional#empty()} if no ticket has that number
+     * @return the matching ticket, or {@link Optional#empty()} 
+     * if no ticket has that number
      */
     Optional<ParkingTicket> findByNumber(int number);
 
     /**
      * Reserves and returns the next unique ticket number.
      *
-     * @return a ticket number not previously returned by this repository instance
+     * @return a ticket number not previously returned 
+     * by this repository instance
      */
     int nextTicketNumber();
 }

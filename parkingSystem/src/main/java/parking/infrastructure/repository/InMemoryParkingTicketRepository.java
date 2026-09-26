@@ -13,8 +13,11 @@ import java.util.stream.Collectors;
  * In-memory {@link ParkingTicketRepository} implementation, backed by an
  * {@link ArrayList} and an internal, monotonically increasing counter
  * for ticket numbers.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
-public class InMemoryParkingTicketRepository implements ParkingTicketRepository {
+public class InMemoryParkingTicketRepository implements ParkingTicketRepository{
 
     private final List<ParkingTicket> tickets = new ArrayList<>();
     private int nextNumber = 1;
@@ -57,7 +60,8 @@ public class InMemoryParkingTicketRepository implements ParkingTicketRepository 
     @Override
     public Optional<ParkingTicket> findActiveByPlate(String plate) {
         return tickets.stream()
-                .filter(t -> t.getStatus() == TicketStatus.ACTIVE && t.getVehicle().getPlate().equalsIgnoreCase(plate))
+                .filter(t -> t.getStatus() == TicketStatus.ACTIVE &&
+                        t.getVehicle().getPlate().equalsIgnoreCase(plate))
                 .findFirst();
     }
 

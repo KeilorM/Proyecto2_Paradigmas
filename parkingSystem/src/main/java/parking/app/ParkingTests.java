@@ -18,6 +18,9 @@ import java.util.List;
  * state, prints input, expected result and actual result, and at the
  * end prints a summary that can be pasted directly into the report's
  * test table.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public class ParkingTests {
 
@@ -49,7 +52,7 @@ public class ParkingTests {
 
         System.out.println();
         System.out.println("========================================");
-        System.out.println("SUMMARY: " + passed + " / " + total + " tests passed");
+        System.out.println("SUMMARY:" + passed + " / " + total + " tests passed");
         System.out.println("========================================");
         System.out.println();
         System.out.println("Test table (copy into the report):");
@@ -62,35 +65,44 @@ public class ParkingTests {
 
     private static void test1CarEntry() {
         ParkingSystem system = new ParkingSystem();
-        system.registerParkingSpace.execute(new ParkingSpace("A-1", SpaceType.CAR));
+        system.registerParkingSpace.execute(new ParkingSpace("A-1",
+                SpaceType.CAR));
         Vehicle v = new Car("AAA111", "Toyota", "Corolla", "Red");
         system.registerVehicle.execute(v);
-        ParkingTicket ticket = system.checkInVehicle.execute(v, LocalDateTime.now());
+        ParkingTicket ticket = system.checkInVehicle.execute(
+                v, LocalDateTime.now());
         verify("1. Correct entry of a car",
                 "Ticket ACTIVE and space OCCUPIED",
-                ticket.getStatus() == TicketStatus.ACTIVE && ticket.getSpace().getStatus() == SpaceStatus.OCCUPIED);
+                ticket.getStatus() == TicketStatus.ACTIVE &&
+                        ticket.getSpace().getStatus() == SpaceStatus.OCCUPIED);
     }
 
     private static void test2MotorcycleEntry() {
         ParkingSystem system = new ParkingSystem();
-        system.registerParkingSpace.execute(new ParkingSpace("M-1", SpaceType.MOTORCYCLE));
+        system.registerParkingSpace.execute(new ParkingSpace("M-1",
+                SpaceType.MOTORCYCLE));
         Vehicle v = new Motorcycle("MOT111", "Honda", "CB190", "Black");
         system.registerVehicle.execute(v);
-        ParkingTicket ticket = system.checkInVehicle.execute(v, LocalDateTime.now());
+        ParkingTicket ticket = system.checkInVehicle.execute(
+                v, LocalDateTime.now());
         verify("2. Correct entry of a motorcycle",
                 "Ticket ACTIVE and space OCCUPIED",
-                ticket.getStatus() == TicketStatus.ACTIVE && ticket.getSpace().getStatus() == SpaceStatus.OCCUPIED);
+                ticket.getStatus() == TicketStatus.ACTIVE &&
+                        ticket.getSpace().getStatus() == SpaceStatus.OCCUPIED);
     }
 
     private static void test3CargoEntry() {
         ParkingSystem system = new ParkingSystem();
-        system.registerParkingSpace.execute(new ParkingSpace("C-1", SpaceType.CARGO));
+        system.registerParkingSpace.execute(new ParkingSpace(
+                "C-1", SpaceType.CARGO));
         Vehicle v = new CargoVehicle("CAR111", "Freightliner", "M2", "White");
         system.registerVehicle.execute(v);
-        ParkingTicket ticket = system.checkInVehicle.execute(v, LocalDateTime.now());
+        ParkingTicket ticket = system.checkInVehicle.execute(
+                v, LocalDateTime.now());
         verify("3. Correct entry of a cargo vehicle",
                 "Ticket ACTIVE and space OCCUPIED",
-                ticket.getStatus() == TicketStatus.ACTIVE && ticket.getSpace().getStatus() == SpaceStatus.OCCUPIED);
+                ticket.getStatus() == TicketStatus.ACTIVE &&
+                        ticket.getSpace().getStatus() == SpaceStatus.OCCUPIED);
     }
 
     // ---------- Invalid assignment cases ----------
@@ -147,8 +159,10 @@ public class ParkingTests {
 
     private static void test7VehicleWithActiveTicket() {
         ParkingSystem system = new ParkingSystem();
-        system.registerParkingSpace.execute(new ParkingSpace("A-1", SpaceType.CAR));
-        system.registerParkingSpace.execute(new ParkingSpace("A-2", SpaceType.CAR));
+        system.registerParkingSpace.execute(new ParkingSpace("A-1",
+                SpaceType.CAR));
+        system.registerParkingSpace.execute(new ParkingSpace("A-2",
+                SpaceType.CAR));
         Vehicle v = new Car("EEE555", "Hyundai", "Tucson", "White");
         system.registerVehicle.execute(v);
         system.checkInVehicle.execute(v, LocalDateTime.now());
@@ -159,7 +173,8 @@ public class ParkingTests {
         } catch (VehicleWithActiveTicketException e) {
             threwException = true;
         }
-        verify("7. Attempt to check in a vehicle that already has an active ticket",
+        verify("7. Attempt to check in a vehicle that already has an "
+                + "active ticket",
                 "VehicleWithActiveTicketException",
                 threwException);
     }
@@ -186,12 +201,12 @@ public class ParkingTests {
         Vehicle v = new Car("HHH888", "Chevrolet", "Spark", "Blue");
         long amount = v.getRate().calculateAmount(61);
         verify("10. Sixty-one-minute stay",
-                "Charged two full hours (1800); the fraction rounds up to a full hour",
+                "Charged two full hours (1800); the fraction rounds up to "
+                        + "a full hour",
                 amount == 1800);
     }
 
     private static void test11StayWithDailyCap() {
-        // 11 hours for a car with no cap: 11 * 900 = 9900, but the daily cap is 7000
         Vehicle v = new Car("III999", "Volkswagen", "Gol", "Gray");
         long minutes = 11 * 60;
         long amount = v.getRate().calculateAmount(minutes);
@@ -204,7 +219,8 @@ public class ParkingTests {
 
     private static void test12CorrectTicketClosing() {
         ParkingSystem system = new ParkingSystem();
-        system.registerParkingSpace.execute(new ParkingSpace("A-1", SpaceType.CAR));
+        system.registerParkingSpace.execute(new ParkingSpace("A-1",
+                SpaceType.CAR));
         Vehicle v = new Car("JJJ000", "Renault", "Logan", "Red");
         system.registerVehicle.execute(v);
         LocalDateTime entry = LocalDateTime.of(2026, 9, 16, 8, 0);
@@ -213,22 +229,26 @@ public class ParkingTests {
         system.checkOutVehicle.execute(v.getPlate(), exit);
         verify("12. Correct ticket closing",
                 "Ticket CLOSED with amount 1800 (2 hours)",
-                ticket.getStatus() == TicketStatus.CLOSED && ticket.getAmount() == 1800);
+                ticket.getStatus() == TicketStatus.CLOSED &&
+                        ticket.getAmount() == 1800);
     }
 
     private static void test13CorrectPayment() {
         ParkingSystem system = new ParkingSystem();
-        system.registerParkingSpace.execute(new ParkingSpace("A-1", SpaceType.CAR));
+        system.registerParkingSpace.execute(new ParkingSpace("A-1",
+                SpaceType.CAR));
         Vehicle v = new Car("KKK111", "Fiat", "Cronos", "White");
         system.registerVehicle.execute(v);
         LocalDateTime entry = LocalDateTime.of(2026, 9, 16, 8, 0);
         LocalDateTime exit = LocalDateTime.of(2026, 9, 16, 9, 0);
         ParkingTicket ticket = system.checkInVehicle.execute(v, entry);
         system.checkOutVehicle.execute(v.getPlate(), exit);
-        Payment payment = system.registerPayment.execute(ticket, PaymentType.CASH, exit);
+        Payment payment = system.registerPayment.execute(ticket,
+                PaymentType.CASH, exit);
         verify("13. Correct payment",
                 "Ticket PAID and payment registered with the ticket's amount",
-                ticket.getStatus() == TicketStatus.PAID && payment.getAmount() == ticket.getAmount());
+                ticket.getStatus() == TicketStatus.PAID &&
+                        payment.getAmount() == ticket.getAmount());
     }
 
     private static void test14SpaceRelease() {
@@ -238,7 +258,8 @@ public class ParkingTests {
         Vehicle v = new Car("LLL222", "Peugeot", "208", "Black");
         system.registerVehicle.execute(v);
         system.checkInVehicle.execute(v, LocalDateTime.now());
-        system.checkOutVehicle.execute(v.getPlate(), LocalDateTime.now().plusHours(1));
+        system.checkOutVehicle.execute(v.getPlate(),
+                LocalDateTime.now().plusHours(1));
         verify("14. Space release",
                 "The space becomes AVAILABLE again",
                 space.getStatus() == SpaceStatus.AVAILABLE);
@@ -246,8 +267,10 @@ public class ParkingTests {
 
     private static void test15TotalRevenue() {
         ParkingSystem system = new ParkingSystem();
-        system.registerParkingSpace.execute(new ParkingSpace("A-1", SpaceType.CAR));
-        system.registerParkingSpace.execute(new ParkingSpace("M-1", SpaceType.MOTORCYCLE));
+        system.registerParkingSpace.execute(new ParkingSpace("A-1",
+                SpaceType.CAR));
+        system.registerParkingSpace.execute(new ParkingSpace("M-1",
+                SpaceType.MOTORCYCLE));
 
         Vehicle car = new Car("MMM333", "Subaru", "Impreza", "Red");
         Vehicle motorcycle = new Motorcycle("NNN444", "Yamaha", "FZ", "Black");
@@ -255,7 +278,7 @@ public class ParkingTests {
         system.registerVehicle.execute(motorcycle);
 
         LocalDateTime entry = LocalDateTime.of(2026, 9, 16, 8, 0);
-        LocalDateTime exit = LocalDateTime.of(2026, 9, 16, 9, 0); // 1 hour each
+        LocalDateTime exit = LocalDateTime.of(2026, 9, 16, 9, 0);
 
         ParkingTicket t1 = system.checkInVehicle.execute(car, entry);
         ParkingTicket t2 = system.checkInVehicle.execute(motorcycle, entry);
@@ -279,9 +302,10 @@ public class ParkingTests {
      * @param expected  human-readable description of the expected result
      * @param condition the actual boolean outcome of the test
      */
-    private static void verify(String name, String expected, boolean condition) {
+    private static void verify(String name, String expected, boolean condition){
         total++;
-        String actual = condition ? "Meets expectation" : "DOES NOT meet expectation";
+        String actual = condition ? "Meets expectation" :
+                "DOES NOT meet expectation";
         if (condition) {
             passed++;
         }

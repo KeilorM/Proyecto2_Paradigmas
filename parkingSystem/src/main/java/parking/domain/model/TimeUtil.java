@@ -7,6 +7,9 @@ package parking.domain.model;
  * "any fraction of an hour is billed as a full hour" - in one place, so
  * every rate implementation applies it identically instead of each one
  * re-implementing (and possibly getting slightly wrong) its own rounding.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public final class TimeUtil {
 

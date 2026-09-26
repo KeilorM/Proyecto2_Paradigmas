@@ -9,6 +9,9 @@ import java.time.LocalDateTime;
 /**
  * Checks a vehicle out of the parking lot: closes its active ticket
  * (which computes the final amount) and releases the space it occupied.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public class CheckOutVehicleUseCase {
 

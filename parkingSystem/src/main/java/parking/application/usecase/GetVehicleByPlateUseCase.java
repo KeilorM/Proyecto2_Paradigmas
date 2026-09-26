@@ -12,6 +12,9 @@ import java.util.Optional;
  * have the plate typed by the user and need the actual {@link Vehicle}
  * instance to pass into other use cases like
  * {@link CheckInVehicleUseCase}.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public class GetVehicleByPlateUseCase {
 
@@ -26,7 +29,8 @@ public class GetVehicleByPlateUseCase {
 
     /**
      * @param plate the plate to search for
-     * @return the matching vehicle, or {@link Optional#empty()} if none is registered
+     * @return the matching vehicle, or {@link Optional#empty()} 
+     * if none is registered
      */
     public Optional<Vehicle> execute(String plate) {
         return vehicleRepository.findByPlate(plate);

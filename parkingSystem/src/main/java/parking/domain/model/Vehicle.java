@@ -17,6 +17,9 @@ import java.util.Objects;
  * Two vehicles are considered equal when they share the same
  * {@link #getPlate() plate}, since a plate uniquely identifies a
  * vehicle regardless of any other attribute.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public abstract class Vehicle {
 
@@ -32,7 +35,8 @@ public abstract class Vehicle {
      * @param brand manufacturer brand
      * @param model vehicle model
      * @param color vehicle color
-     * @throws IllegalArgumentException if {@code plate} is {@code null} or blank
+     * @throws IllegalArgumentException if {@code plate} is 
+     * {@code null} or blank
      */
     protected Vehicle(String plate, String brand, String model, String color) {
         if (plate == null || plate.isBlank()) {
@@ -103,7 +107,8 @@ public abstract class Vehicle {
      * Two vehicles are equal when they have the same plate.
      *
      * @param o the object to compare against
-     * @return {@code true} if {@code o} is a {@code Vehicle} with the same plate
+     * @return {@code true} if {@code o} is a {@code Vehicle} 
+     * with the same plate
      */
     @Override
     public boolean equals(Object o) {
@@ -126,6 +131,7 @@ public abstract class Vehicle {
      */
     @Override
     public String toString() {
-        return getTypeDescription() + " [" + plate + "] " + brand + " " + model + " (" + color + ")";
+        return getTypeDescription() + " [" + plate + "] " + brand + " " +
+                model + " (" + color + ")";
     }
 }

@@ -5,5 +5,8 @@
  * forming a shallow hierarchy that lets callers catch broadly
  * ({@code BusinessException}) or narrowly (a specific subclass) as
  * needed.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 package parking.domain.exception;
