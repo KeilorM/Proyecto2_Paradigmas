@@ -7,6 +7,9 @@ import java.util.List;
 
 /**
  * Lists every payment ever registered in the system.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public class ListPaymentsUseCase {
 

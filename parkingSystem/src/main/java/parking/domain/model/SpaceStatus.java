@@ -6,6 +6,9 @@ package parking.domain.model;
  * A space transitions {@code AVAILABLE -> OCCUPIED -> AVAILABLE} on every
  * normal entry/exit cycle. {@code OUT_OF_SERVICE} is an administrative
  * state that blocks any assignment until it is manually lifted.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public enum SpaceStatus {
 
@@ -15,6 +18,7 @@ public enum SpaceStatus {
     /** The space currently holds a vehicle and cannot be reassigned. */
     OCCUPIED,
 
-    /** The space is disabled for maintenance or any other reason and cannot be assigned. */
+    /** The space is disabled for maintenance or any other reason and cannot 
+     * be assigned. */
     OUT_OF_SERVICE
 }

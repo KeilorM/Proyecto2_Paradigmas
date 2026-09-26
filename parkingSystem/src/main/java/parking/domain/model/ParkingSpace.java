@@ -10,6 +10,9 @@ package parking.domain.model;
  * {@link #occupy()}, {@link #release()} or
  * {@link #markOutOfService()}, each of which enforces its own
  * preconditions.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public class ParkingSpace {
 
@@ -20,7 +23,8 @@ public class ParkingSpace {
     /**
      * Creates a new space, initially {@link SpaceStatus#AVAILABLE}.
      *
-     * @param number unique identifier shown to staff and customers (e.g. {@code "A-1"})
+     * @param number unique identifier shown to staff and customers
+     * (e.g. {@code "A-1"})
      * @param type   the kind of vehicle this space is built for
      */
     public ParkingSpace(String number, SpaceType type) {
@@ -35,14 +39,16 @@ public class ParkingSpace {
      * {@link Vehicle#getCompatibleSpaceType()}.
      *
      * @param vehicle the vehicle to check
-     * @return {@code true} if the space's type matches the vehicle's required type
+     * @return {@code true} if the space's type matches the vehicle's 
+     * required type
      */
     public boolean isCompatibleWith(Vehicle vehicle) {
         return this.type == vehicle.getCompatibleSpaceType();
     }
 
     /**
-     * @return {@code true} if this space's status is {@link SpaceStatus#AVAILABLE}
+     * @return {@code true} if this space's status is 
+     * {@link SpaceStatus#AVAILABLE}
      */
     public boolean isAvailable() {
         return status == SpaceStatus.AVAILABLE;
@@ -51,14 +57,17 @@ public class ParkingSpace {
     /**
      * Marks this space as occupied.
      *
-     * @throws IllegalStateException if the space is out of service or already occupied
+     * @throws IllegalStateException if the space is out of service 
+     * or already occupied
      */
     public void occupy() {
         if (status == SpaceStatus.OUT_OF_SERVICE) {
-            throw new IllegalStateException("Space " + number + " is out of service");
+            throw new IllegalStateException("Space " + number +
+                    " is out of service");
         }
         if (status == SpaceStatus.OCCUPIED) {
-            throw new IllegalStateException("Space " + number + " is already occupied");
+            throw new IllegalStateException("Space " + number +
+                    " is already occupied");
         }
         this.status = SpaceStatus.OCCUPIED;
     }
@@ -70,7 +79,8 @@ public class ParkingSpace {
      */
     public void release() {
         if (status == SpaceStatus.OUT_OF_SERVICE) {
-            throw new IllegalStateException("Space " + number + " is out of service");
+            throw new IllegalStateException("Space " + number +
+                    " is out of service");
         }
         this.status = SpaceStatus.AVAILABLE;
     }

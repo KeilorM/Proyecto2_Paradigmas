@@ -10,6 +10,9 @@ import java.util.stream.Collectors;
 /**
  * Lists every vehicle that is currently inside the parking lot, i.e.
  * every vehicle whose ticket is still {@code ACTIVE}.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public class ListVehiclesInsideUseCase {
 

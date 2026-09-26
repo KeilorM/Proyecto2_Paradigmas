@@ -5,6 +5,9 @@ import parking.domain.repository.ParkingSpaceRepository;
 
 /**
  * Registers a new physical space in the parking lot.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public class RegisterParkingSpaceUseCase {
 

@@ -7,6 +7,9 @@ package parking.domain.model;
  * {@value #DAILY_CAP_AMOUNT} per 24-hour period once the stay reaches
  * {@value #MIN_HOURS_FOR_CAP} billable hours, and requires a
  * {@link SpaceType#CARGO} space.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public class CargoVehicle extends Vehicle {
 
@@ -22,7 +25,7 @@ public class CargoVehicle extends Vehicle {
      * @param model vehicle model
      * @param color vehicle color
      */
-    public CargoVehicle(String plate, String brand, String model, String color) {
+    public CargoVehicle(String plate, String brand, String model, String color){
         super(plate, brand, model, color);
     }
 
@@ -34,7 +37,8 @@ public class CargoVehicle extends Vehicle {
      */
     @Override
     public Rate getRate() {
-        return new RateWithDailyCap(new HourlyRate(RATE_PER_HOUR), MIN_HOURS_FOR_CAP, DAILY_CAP_AMOUNT);
+        return new RateWithDailyCap(new HourlyRate(RATE_PER_HOUR),
+                MIN_HOURS_FOR_CAP, DAILY_CAP_AMOUNT);
     }
 
     /**

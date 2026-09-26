@@ -3,6 +3,9 @@ package parking.domain.exception;
 /**
  * Thrown when attempting to register an exit for a vehicle that has no
  * currently active ticket.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public class TicketNotActiveException extends BusinessException {
 

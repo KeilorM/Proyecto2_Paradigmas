@@ -13,6 +13,9 @@ import java.time.LocalDateTime;
  * always delegates that calculation to the ticket's vehicle's
  * {@link Vehicle#getRate() rate}, never hard-coding or duplicating the
  * pricing logic itself.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public class ParkingTicket {
 
@@ -32,7 +35,8 @@ public class ParkingTicket {
      * @param space     the space assigned to the vehicle
      * @param entryTime the moment the vehicle entered
      */
-    public ParkingTicket(int number, Vehicle vehicle, ParkingSpace space, LocalDateTime entryTime) {
+    public ParkingTicket(int number, Vehicle vehicle, ParkingSpace space,
+            LocalDateTime entryTime) {
         this.number = number;
         this.vehicle = vehicle;
         this.space = space;
@@ -47,12 +51,15 @@ public class ParkingTicket {
      * {@link TicketStatus#CLOSED}.
      *
      * @param exitTime the moment the vehicle left
-     * @return the computed amount, in the same units as {@link Rate#calculateAmount(long)}
-     * @throws IllegalStateException if the ticket is not currently {@link TicketStatus#ACTIVE}
+     * @return the computed amount, in the same units as 
+     * {@link Rate#calculateAmount(long)}
+     * @throws IllegalStateException if the ticket is not currently 
+     * {@link TicketStatus#ACTIVE}
      */
     public long close(LocalDateTime exitTime) {
         if (status != TicketStatus.ACTIVE) {
-            throw new IllegalStateException("Ticket " + number + " is not active");
+            throw new IllegalStateException("Ticket " + number +
+                    " is not active");
         }
         this.exitTime = exitTime;
         long minutes = Duration.between(entryTime, exitTime).toMinutes();
@@ -64,11 +71,13 @@ public class ParkingTicket {
     /**
      * Marks the ticket as paid.
      *
-     * @throws IllegalStateException if the ticket is not currently {@link TicketStatus#CLOSED}
+     * @throws IllegalStateException if the ticket is not currently 
+     * {@link TicketStatus#CLOSED}
      */
     public void markAsPaid() {
         if (status != TicketStatus.CLOSED) {
-            throw new IllegalStateException("Ticket " + number + " must be closed before it can be paid");
+            throw new IllegalStateException("Ticket " + number +
+                    " must be closed before it can be paid");
         }
         this.status = TicketStatus.PAID;
     }
@@ -80,7 +89,8 @@ public class ParkingTicket {
      * @return minutes elapsed between entry and exit (or now, if still active)
      */
     public long getStayInMinutes() {
-        LocalDateTime until = (exitTime != null) ? exitTime : LocalDateTime.now();
+        LocalDateTime until = (exitTime != null) ? exitTime :
+                LocalDateTime.now();
         return Duration.between(entryTime, until).toMinutes();
     }
 
@@ -113,7 +123,8 @@ public class ParkingTicket {
     }
 
     /**
-     * @return the moment the vehicle exited, or {@code null} if the ticket is still active
+     * @return the moment the vehicle exited, or {@code null} 
+     * if the ticket is still active
      */
     public LocalDateTime getExitTime() {
         return exitTime;
@@ -127,7 +138,8 @@ public class ParkingTicket {
     }
 
     /**
-     * @return the amount computed when the ticket was closed, or {@code 0} while still active
+     * @return the amount computed when the ticket was closed, or 
+     * {@code 0} while still active
      */
     public long getAmount() {
         return amount;
@@ -138,6 +150,7 @@ public class ParkingTicket {
      */
     @Override
     public String toString() {
-        return "Ticket #" + number + " - " + vehicle.getPlate() + " - " + status + " - amount: " + amount;
+        return "Ticket #" + number + " - " + vehicle.getPlate() +
+                " - " + status + " - amount: " + amount;
     }
 }

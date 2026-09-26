@@ -3,6 +3,9 @@ package parking.domain.model;
 /**
  * Base {@link Rate} implementation: charges a fixed amount for every
  * billable hour (see {@link TimeUtil#billableHours(long)}), with no cap.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public class HourlyRate implements Rate {
 
@@ -11,12 +14,14 @@ public class HourlyRate implements Rate {
     /**
      * Creates an hourly rate.
      *
-     * @param valuePerHour amount charged per billable hour; must not be negative
+     * @param valuePerHour amount charged per billable hour; must 
+     * not be negative
      * @throws IllegalArgumentException if {@code valuePerHour} is negative
      */
     public HourlyRate(long valuePerHour) {
         if (valuePerHour < 0) {
-            throw new IllegalArgumentException("The value per hour cannot be negative");
+            throw new IllegalArgumentException(
+                    "The value per hour cannot be negative");
         }
         this.valuePerHour = valuePerHour;
     }

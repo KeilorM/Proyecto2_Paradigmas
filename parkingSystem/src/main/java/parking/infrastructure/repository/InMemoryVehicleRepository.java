@@ -16,6 +16,9 @@ import java.util.Optional;
  * file-backed implementation would require no change whatsoever to the
  * domain or application layers, since they only ever depend on the
  * {@link VehicleRepository} interface.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public class InMemoryVehicleRepository implements VehicleRepository {
 

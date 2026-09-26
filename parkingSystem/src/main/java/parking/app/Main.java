@@ -13,6 +13,9 @@ import java.util.Scanner;
  * For a non-interactive, scripted walkthrough of the same operations
  * (useful for quickly generating sample output for the report), see
  * {@link Demo}. The 15 mandatory test cases live in {@link ParkingTests}.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public class Main {
 

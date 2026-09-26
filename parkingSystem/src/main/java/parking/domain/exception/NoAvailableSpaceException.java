@@ -5,6 +5,9 @@ import parking.domain.model.SpaceType;
 /**
  * Thrown when there is no available, compatible space to assign to an
  * entering vehicle.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public class NoAvailableSpaceException extends BusinessException {
 

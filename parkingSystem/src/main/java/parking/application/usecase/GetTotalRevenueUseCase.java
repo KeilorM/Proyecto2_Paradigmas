@@ -5,6 +5,9 @@ import parking.domain.repository.PaymentRepository;
 
 /**
  * Computes the total revenue collected across every registered payment.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public class GetTotalRevenueUseCase {
 

@@ -10,5 +10,8 @@
  * any presentation detail. This keeps them trivially testable and
  * reusable from any delivery mechanism (a console app, a REST
  * controller, a test suite) without modification.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 package parking.application.usecase;

@@ -7,6 +7,9 @@ import java.util.List;
 /**
  * Persistence port for {@link Payment} instances, including the
  * generation of unique payment identifiers.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public interface PaymentRepository {
 

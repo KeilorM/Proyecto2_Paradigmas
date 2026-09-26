@@ -23,56 +23,81 @@ import parking.infrastructure.repository.InMemoryVehicleRepository;
  * Both {@link Main} and {@link ParkingTests} build one instance of this
  * class instead of constructing repositories and use cases by hand,
  * which keeps the wiring logic in exactly one place.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public class ParkingSystem {
 
-    private final VehicleRepository vehicleRepository = new InMemoryVehicleRepository();
-    private final ParkingSpaceRepository spaceRepository = new InMemoryParkingSpaceRepository();
-    private final ParkingTicketRepository ticketRepository = new InMemoryParkingTicketRepository();
-    private final PaymentRepository paymentRepository = new InMemoryPaymentRepository();
+    private final VehicleRepository vehicleRepository = 
+            new InMemoryVehicleRepository();
+    private final ParkingSpaceRepository spaceRepository =
+            new InMemoryParkingSpaceRepository();
+    private final ParkingTicketRepository ticketRepository =
+            new InMemoryParkingTicketRepository();
+    private final PaymentRepository paymentRepository =
+            new InMemoryPaymentRepository();
 
     /** Registers a new vehicle in the system. */
-    public final RegisterVehicleUseCase registerVehicle = new RegisterVehicleUseCase(vehicleRepository);
+    public final RegisterVehicleUseCase registerVehicle =
+            new RegisterVehicleUseCase(vehicleRepository);
 
     /** Registers a new physical parking space. */
-    public final RegisterParkingSpaceUseCase registerParkingSpace = new RegisterParkingSpaceUseCase(spaceRepository);
+    public final RegisterParkingSpaceUseCase registerParkingSpace =
+            new RegisterParkingSpaceUseCase(spaceRepository);
 
-    /** Checks a vehicle into the lot, assigning it a compatible space and opening a ticket. */
-    public final CheckInVehicleUseCase checkInVehicle = new CheckInVehicleUseCase(spaceRepository, ticketRepository);
+    /** Checks a vehicle into the lot, assigning it a compatible space and
+     * opening a ticket. */
+    public final CheckInVehicleUseCase checkInVehicle =
+            new CheckInVehicleUseCase(spaceRepository, ticketRepository);
 
-    /** Validates, in isolation, whether a specific space could be assigned to a specific vehicle. */
-    public final ValidateSpaceAssignmentUseCase validateSpaceAssignment = new ValidateSpaceAssignmentUseCase();
+    /** Validates, in isolation, whether a specific space could be assigned
+     * to a specific vehicle. */
+    public final ValidateSpaceAssignmentUseCase validateSpaceAssignment =
+            new ValidateSpaceAssignmentUseCase();
 
-    /** Checks a vehicle out of the lot, closing its ticket and releasing its space. */
-    public final CheckOutVehicleUseCase checkOutVehicle = new CheckOutVehicleUseCase(ticketRepository);
+    /** Checks a vehicle out of the lot, closing its ticket and 
+     * releasing its space. */
+    public final CheckOutVehicleUseCase checkOutVehicle =
+            new CheckOutVehicleUseCase(ticketRepository);
 
     /** Registers the payment for a closed ticket. */
-    public final RegisterPaymentUseCase registerPayment = new RegisterPaymentUseCase(paymentRepository);
+    public final RegisterPaymentUseCase registerPayment =
+            new RegisterPaymentUseCase(paymentRepository);
 
     /** Lists the currently available spaces of a given type. */
-    public final ListAvailableSpacesUseCase listAvailableSpaces = new ListAvailableSpacesUseCase(spaceRepository);
+    public final ListAvailableSpacesUseCase listAvailableSpaces =
+            new ListAvailableSpacesUseCase(spaceRepository);
 
     /** Lists the vehicles currently parked inside the lot. */
-    public final ListVehiclesInsideUseCase listVehiclesInside = new ListVehiclesInsideUseCase(ticketRepository);
+    public final ListVehiclesInsideUseCase listVehiclesInside =
+            new ListVehiclesInsideUseCase(ticketRepository);
 
     /** Lists every currently active ticket. */
-    public final ListActiveTicketsUseCase listActiveTickets = new ListActiveTicketsUseCase(ticketRepository);
+    public final ListActiveTicketsUseCase listActiveTickets =
+            new ListActiveTicketsUseCase(ticketRepository);
 
     /** Computes space occupancy counts grouped by space type. */
-    public final GetOccupancyByTypeUseCase getOccupancyByType = new GetOccupancyByTypeUseCase(spaceRepository);
+    public final GetOccupancyByTypeUseCase getOccupancyByType =
+            new GetOccupancyByTypeUseCase(spaceRepository);
 
     /** Computes the total revenue collected across every payment. */
-    public final GetTotalRevenueUseCase getTotalRevenue = new GetTotalRevenueUseCase(paymentRepository);
+    public final GetTotalRevenueUseCase getTotalRevenue =
+            new GetTotalRevenueUseCase(paymentRepository);
 
     /** Lists every vehicle ever registered, parked or not. */
-    public final ListRegisteredVehiclesUseCase listRegisteredVehicles = new ListRegisteredVehiclesUseCase(vehicleRepository);
+    public final ListRegisteredVehiclesUseCase listRegisteredVehicles =
+            new ListRegisteredVehiclesUseCase(vehicleRepository);
 
     /** Lists every payment ever registered. */
-    public final ListPaymentsUseCase listPayments = new ListPaymentsUseCase(paymentRepository);
+    public final ListPaymentsUseCase listPayments =
+            new ListPaymentsUseCase(paymentRepository);
 
     /** Looks up a registered vehicle by its plate. */
-    public final GetVehicleByPlateUseCase getVehicleByPlate = new GetVehicleByPlateUseCase(vehicleRepository);
+    public final GetVehicleByPlateUseCase getVehicleByPlate =
+            new GetVehicleByPlateUseCase(vehicleRepository);
 
     /** Looks up a ticket by its number. */
-    public final GetTicketByNumberUseCase getTicketByNumber = new GetTicketByNumberUseCase(ticketRepository);
+    public final GetTicketByNumberUseCase getTicketByNumber =
+            new GetTicketByNumberUseCase(ticketRepository);
 }

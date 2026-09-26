@@ -13,6 +13,9 @@ import java.util.Optional;
  * The concrete storage mechanism lives in the {@code infrastructure}
  * layer and implements this contract, so the domain and application
  * layers never depend on how or where vehicles are actually stored.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public interface VehicleRepository {
 
@@ -27,7 +30,8 @@ public interface VehicleRepository {
      * Looks up a vehicle by its plate.
      *
      * @param plate the plate to search for
-     * @return the matching vehicle, or {@link Optional#empty()} if none is registered
+     * @return the matching vehicle, or {@link Optional#empty()} 
+     * if none is registered
      */
     Optional<Vehicle> findByPlate(String plate);
 

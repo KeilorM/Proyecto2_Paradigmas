@@ -2,6 +2,9 @@ package parking.domain.model;
 
 /**
  * Payment methods accepted when settling a {@link ParkingTicket}.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public enum PaymentType {
 

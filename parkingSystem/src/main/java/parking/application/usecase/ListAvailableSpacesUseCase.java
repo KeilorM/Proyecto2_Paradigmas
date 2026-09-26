@@ -8,6 +8,9 @@ import java.util.List;
 
 /**
  * Lists every currently available space of a given type.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public class ListAvailableSpacesUseCase {
 

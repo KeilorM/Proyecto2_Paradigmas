@@ -2,14 +2,15 @@
 
 Project 2 · EIF400 Programming Paradigms
 
-> **Opening this in NetBeans:** this is a standard Maven project
-> (it has a `pom.xml` at the root). Use **File > Open Project**
-> and select this folder directly. NetBeans detects the `pom.xml`
-> automatically, so no "New Project" wizard is needed.
->
-> From the command line, `mvn compile`, `mvn exec:java` and
-> `mvn package` are also available once Maven can reach the internet
-> to download its plugins the first time.
+**Opening this in NetBeans:** this is a standard Maven project
+(it has a pom.xml inside the parkingSystem folder). Use **File > Open Project**
+and select the parkingSystem folder directly.
+NetBeans detects the `pom.xml` automatically, so no "New Project" 
+wizard is needed.
+
+From the command line, `mvn compile`, `mvn exec:java` and
+`mvn package` are also available once Maven can reach the internet
+to download its plugins the first time.
 
 ## Requirements
 
@@ -22,7 +23,7 @@ The project is organized in layers, following the Clean Architecture
 dependency rule: **dependencies only point inward**. Outer layers know
 about inner layers; inner layers never know about outer ones.
 
-src/parking/
+parkingSystem/src/main/java/parking/
 
 ```
 domain/                     <- Innermost layer. Zero outward dependencies.
@@ -84,7 +85,7 @@ in-memory repositories into the application use cases.
 
 ## How to compile
 
-From the project root, where the `src` folder and `pom.xml` are located:
+From the `parkingSystem` folder, where the `src` folder and `pom.xml` are located:
 
 `mvn compile`
 

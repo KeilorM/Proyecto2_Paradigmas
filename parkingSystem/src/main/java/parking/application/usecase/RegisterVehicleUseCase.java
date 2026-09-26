@@ -6,6 +6,9 @@ import parking.domain.repository.VehicleRepository;
 
 /**
  * Registers a new vehicle in the system so it becomes eligible to check in.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public class RegisterVehicleUseCase {
 
@@ -24,11 +27,13 @@ public class RegisterVehicleUseCase {
      * Registers the given vehicle.
      *
      * @param vehicle the vehicle to register
-     * @throws BusinessException if a vehicle with the same plate is already registered
+     * @throws BusinessException if a vehicle with the same plate is 
+     * already registered
      */
     public void execute(Vehicle vehicle) {
         if (vehicleRepository.existsByPlate(vehicle.getPlate())) {
-            throw new BusinessException("Vehicle with plate " + vehicle.getPlate() + " is already registered");
+            throw new BusinessException("Vehicle with plate " 
+                    + vehicle.getPlate() + " is already registered");
         }
         vehicleRepository.save(vehicle);
     }

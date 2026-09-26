@@ -10,6 +10,9 @@ import java.util.List;
  * In-memory {@link PaymentRepository} implementation, backed by an
  * {@link ArrayList} and an internal, monotonically increasing counter
  * for payment identifiers.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public class InMemoryPaymentRepository implements PaymentRepository {
 

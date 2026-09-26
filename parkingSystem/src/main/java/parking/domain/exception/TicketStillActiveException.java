@@ -3,6 +3,9 @@ package parking.domain.exception;
 /**
  * Thrown when attempting to pay a ticket that has not been closed yet
  * (business rule: "an active ticket cannot be paid").
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public class TicketStillActiveException extends BusinessException {
 

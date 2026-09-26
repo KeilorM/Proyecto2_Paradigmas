@@ -11,6 +11,9 @@ import java.util.List;
  * As with the other repository ports, only the contract lives in the
  * domain layer; the in-memory (or any future) implementation lives in
  * {@code parking.infrastructure.repository}.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public interface ParkingSpaceRepository {
 

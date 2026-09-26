@@ -8,6 +8,9 @@ package parking.domain.model;
  * the system inspects the vehicle's concrete type to decide how much to
  * charge; everything is resolved by invoking {@link #calculateAmount(long)}
  * polymorphically on whichever {@code Rate} the vehicle hands back.
+ * 
+ * @author Keilor MC
+ * @author Randall AC
  */
 public interface Rate {
 
